@@ -39,7 +39,7 @@ namespace Application.FunctionalTests.Todos.Commands
             var item = await FindAsync<TodoItem>(itemId);
 
             item.Should().NotBeNull();
-            item.Description.Should().Be(command.Description);
+            item!.Description.Should().Be(command.Description);
             item.PriorityLevel.Should().Be(command.PriorityLevel);
             item.LastModifiedBy.Should().NotBeNull();
             item.LastModifiedBy.Should().Be(userId);

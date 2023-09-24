@@ -5,16 +5,20 @@ namespace DTM.Domain.Entities.Models
 {
     public class Note : BaseAuditableEntity
     {
-        public required string Title { get; set; }
+        public string Title { get; set; }
 
-        public string? Description { get; set; }
+        public string? Description { get; set; } = "";
 
         public Category? Category { get; set; }
 
         private bool _isEmergency;
         public bool IsEmergency
         {
-            get => _isEmergency;
+            get
+            {
+                return _isEmergency;
+            }
+
             set
             {
                 if (value && !_isEmergency)

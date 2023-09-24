@@ -7,6 +7,10 @@ namespace DTM.Application.Notes.Commands.CreateNote
     public record CreateNoteCommand : IRequest<int>
     {
         public string Title { get; init; }
+
+        public string? Description { get; init; }
+
+        public Category? Category { get; init; }
     }
 
     public class CreateNoteCommandHandler : IRequestHandler<CreateNoteCommand, int>
@@ -22,7 +26,9 @@ namespace DTM.Application.Notes.Commands.CreateNote
         {
             var entity = new Note
             {
-                Title = request.Title
+                Title = request.Title,
+                Description = request.Description,
+                Category = request.Category
             };
 
             entity.AddDomainEvent(new CreateEvent<Note>(entity));

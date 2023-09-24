@@ -8,8 +8,10 @@ namespace DTM.Infrastructure.Data.Configurations.NoteConfigurations
     {
         public void Configure(EntityTypeBuilder<Note> builder)
         {
-            builder.Property(note => note.Title).HasMaxLength(200).IsRequired();
-            builder.Property(note => note.IsEmergency).HasDefaultValue(false);
+            builder.Property(note => note.Title).HasMaxLength(256).IsRequired();
+            builder.Property(note => note.Description).HasDefaultValue("").HasMaxLength(4096).IsRequired();
+            builder.Property(note => note.Category).HasDefaultValue(null);
+            builder.Property(note => note.IsEmergency).HasDefaultValue(false).IsRequired();
         }
     }
 }

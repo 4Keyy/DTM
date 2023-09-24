@@ -4,7 +4,7 @@
     {
         public UpdateTodoItemCommandValidator()
         {
-            RuleFor(todoItem => todoItem.Title).MaximumLength(200).NotEmpty();
+            RuleFor(todoItem => todoItem.Title).MaximumLength(256).NotEmpty();
         }
     }
 }

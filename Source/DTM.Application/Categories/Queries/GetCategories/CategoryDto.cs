@@ -8,6 +8,8 @@ namespace DTM.Application.Categories.Queries.GetCategories
 
         public string Title { get; init; }
 
+        public string? Description { get; init; }
+
         public string Colour { get; init; }
 
         private class Mapping : Profile

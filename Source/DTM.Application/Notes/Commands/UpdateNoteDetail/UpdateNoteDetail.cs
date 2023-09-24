@@ -7,7 +7,7 @@ namespace DTM.Application.Notes.Commands.UpdateNoteDetail
     {
         public int Id { get; init; }
 
-        public Category Category { get; init; }
+        public Category? Category { get; init; }
 
         public bool IsEmergency { get; init; }
     }

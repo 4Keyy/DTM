@@ -12,21 +12,21 @@ namespace DTM.WebServer.Infrastructure
         {
             // Register known exception types and handlers.
             _exceptionHandlers = new()
-        {
-            { typeof(ValidationException), HandleValidationException },
-            { typeof(NotFoundException), HandleNotFoundException },
-            { typeof(UnauthorizedAccessException), HandleUnauthorizedAccessException },
-            { typeof(ForbiddenAccessException), HandleForbiddenAccessException },
-        };
+            {
+                { typeof(ValidationException), HandleValidationException },
+                { typeof(NotFoundException), HandleNotFoundException },
+                { typeof(UnauthorizedAccessException), HandleUnauthorizedAccessException },
+                { typeof(ForbiddenAccessException), HandleForbiddenAccessException },
+            };
         }
 
         public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
         {
             var exceptionType = exception.GetType();
 
-            if (_exceptionHandlers.ContainsKey(exceptionType))
+            if (_exceptionHandlers.TryGetValue(exceptionType, out Func<HttpContext, Exception, Task>? value))
             {
-                await _exceptionHandlers[exceptionType].Invoke(httpContext, exception);
+                await value.Invoke(httpContext, exception);
                 return true;
             }
 

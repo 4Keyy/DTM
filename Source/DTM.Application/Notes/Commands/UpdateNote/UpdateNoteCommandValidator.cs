@@ -4,7 +4,7 @@
     {
         public UpdateNoteCommandmmandValidator()
         {
-            RuleFor(note => note.Title).MaximumLength(200).NotEmpty();
+            RuleFor(note => note.Title).MaximumLength(256).NotEmpty();
         }
     }
 }

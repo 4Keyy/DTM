@@ -4,7 +4,8 @@
     {
         public CreateCategoryCommandValidator()
         {
-            RuleFor(category => category.Title).MaximumLength(200).NotEmpty();
+            RuleFor(category => category.Title).MaximumLength(64).NotEmpty();
+            RuleFor(category => category.Description).MaximumLength(2048);
             RuleFor(category => category.Colour).NotEmpty();
         }
     }

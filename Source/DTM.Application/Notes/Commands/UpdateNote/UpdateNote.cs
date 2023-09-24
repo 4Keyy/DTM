@@ -8,7 +8,7 @@ namespace DTM.Application.Notes.Commands.UpdateNote
 
         public string Title { get; init; }
 
-        public string Description { get; init; }
+        public string? Description { get; init; }
     }
 
     public class UpdateNoteCommandHandler : IRequestHandler<UpdateNoteCommand>

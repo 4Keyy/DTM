@@ -6,11 +6,11 @@ namespace DTM.Domain.Entities.Models
 {
     public class TodoItem : BaseAuditableEntity
     {
-        public required string Title { get; set; }
+        public string Title { get; set; }
 
         public string? Description { get; set; } = "";
 
-        public PriorityLevel PriorityLevel { get; set; }
+        public PriorityLevel PriorityLevel { get; set; } = PriorityLevel.None;
 
         public Category? Category { get; set; }
 
@@ -19,7 +19,11 @@ namespace DTM.Domain.Entities.Models
         private bool _isEmergency;
         public bool IsEmergency
         {
-            get => _isEmergency;
+            get
+            {
+                return _isEmergency;
+            }
+
             set
             {
                 if (value && !_isEmergency)
@@ -34,7 +38,11 @@ namespace DTM.Domain.Entities.Models
         private bool _isDone;
         public bool IsDone
         {
-            get => _isDone;
+            get
+            {
+                return _isDone;
+            }
+
             set
             {
                 if (value && !_isDone)

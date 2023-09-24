@@ -9,6 +9,8 @@ namespace DTM.Application.Categories.Commands.CreateCategory
     {
         public string Title { get; init; }
 
+        public string? Description { get; init; }
+
         public Colour Colour { get; init; }
     }
 
@@ -26,6 +28,7 @@ namespace DTM.Application.Categories.Commands.CreateCategory
             var entity = new Category
             {
                 Title = request.Title,
+                Description = request.Description,
                 Colour = request.Colour
             };
 

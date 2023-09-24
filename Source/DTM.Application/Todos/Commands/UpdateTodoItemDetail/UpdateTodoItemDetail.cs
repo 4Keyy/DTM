@@ -8,13 +8,13 @@ namespace DTM.Application.Todos.Commands.UpdateTodoItemDetail
     {
         public int Id { get; init; }
 
-        public Category Category { get; init; }
-
-        public DateTime Reminder { get; init; }
+        public string Description { get; init; }
 
         public PriorityLevel PriorityLevel { get; init; }
 
-        public string Description { get; init; }
+        public Category? Category { get; init; }
+
+        public DateTime? Reminder { get; init; }
     }
 
     public class UpdateTodoItemDetailCommandHandler : IRequestHandler<UpdateTodoItemDetailCommand>
@@ -32,10 +32,10 @@ namespace DTM.Application.Todos.Commands.UpdateTodoItemDetail
 
             Guard.Against.NotFound(request.Id, entity);
 
+            entity.Description = request.Description;
+            entity.PriorityLevel = request.PriorityLevel;
             entity.Category = request.Category;
             entity.Reminder = request.Reminder;
-            entity.PriorityLevel = request.PriorityLevel;
-            entity.Description = request.Description;
 
             await _context.SaveChangesAsync(cancellationToken);
         }

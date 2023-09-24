@@ -4,7 +4,7 @@
     {
         public UpdateCategoryCommandValidator()
         {
-            RuleFor(category => category.Title).MinimumLength(20).NotEmpty();
+            RuleFor(category => category.Title).MinimumLength(64).NotEmpty();
             RuleFor(category => category.Colour).NotNull();
         }
     }
